@@ -33,8 +33,10 @@ for i, element in enumerate(filtered['Nom']):
     mailto_link= f"mailto:{filtered['Mail'].iloc[i]}"
 
     with col.container(border=True):
-        st.image(filtered['Image'].iloc[i])
+        if pd.isna(filtered['Image'].iloc[i])==False: st.image(filtered['Image'].iloc[i]) 
+        else : st.image('https://www.cma-hautesavoie.fr/sites/cma-74/files/cma-haute-savoie-logo_0.png')
         st.write(filtered['Nom'].iloc[i]+' '+filtered['Prenom'].iloc[i])
-        if pd.isna(filtered['Poste'].iloc[i])==False: st.caption(filtered['Poste'].iloc[i])
+        if pd.isna(filtered['Poste'].iloc[i])==False : st.caption(filtered['Poste'].iloc[i])
+        else: st.caption('Poste non renseignée')
         if st.button("mail", key = i, use_container_width = True):
             webbrowser.open(mailto_link)
