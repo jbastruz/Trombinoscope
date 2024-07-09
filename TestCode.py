@@ -38,5 +38,4 @@ for i, element in enumerate(filtered['Nom']):
         st.write(filtered['Nom'].iloc[i]+' '+filtered['Prenom'].iloc[i])
         if pd.isna(filtered['Poste'].iloc[i])==False : st.caption(filtered['Poste'].iloc[i])
         else: st.caption('Poste non renseignée')
-        if st.button("mail", key = i, use_container_width = True):
-            webbrowser.open(mailto_link)
+        st.markdown(f'<a href={mailto_link}>Mail</a>', unsafe_allow_html=True)
